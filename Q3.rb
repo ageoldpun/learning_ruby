@@ -20,7 +20,7 @@ assert_equal false, whole_number?(0.123)
   
 def is_prime?(number)
   array = divisors_for(number)
-  !array.any? { |value| whole_number?(value) }
+  array.none? { |value| whole_number?(value) }
 end
 assert_equal true, is_prime?(2)
 assert_equal true, is_prime?(5)
