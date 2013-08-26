@@ -1,5 +1,4 @@
-require '03_ordered_vowels'
-require 'rspec'
+require 'rspec/autorun'
 
 # Write a method, `ordered_vowel_words(str)` that takes a string of
 # lowercase words and returns a string with just the words containing
@@ -10,6 +9,22 @@ require 'rspec'
 # which returns true/false if a word's vowels are ordered.
 #
 # Difficulty: 2/5
+
+def ordered_vowel_word?(word)
+  vowels = word.tr("^aeiou", "")
+  vowels.chars.sort == vowels.chars.to_a
+end
+
+def ordered_vowel_words(str)
+  result = []
+  split_str = str.split
+  split_str.each do |word|
+    if ordered_vowel_word?(word)
+      result << word
+    end
+  end
+  result.join(" ")
+end
 
 describe "#ordered_vowel_words" do
   it "returns a word that is in order" do

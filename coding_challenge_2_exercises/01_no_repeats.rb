@@ -13,17 +13,26 @@ def no_repeat?(year)
   if numbers.uniq.length == numbers.length
     numbers = true
   else
-    numbers = false
+    numbers = false  
   end
-  return numbers
+  numbers
 end
 
-def no_repeats(year_start, year_end)
-  array = []
-  (year_start..year_end).each do |specific_year| 
-    array << specific_year if no_repeat?(specific_year) == true
+describe "#no_repeat?" do
+  it "should return false if a number is repeated" do
+    no_repeat?(1123).should == false
   end
-  return array
+  it "should return true if no numbers are repeated" do
+    no_repeat?(1234).should == true
+  end
+end 
+
+def no_repeats(year_start, year_end)
+  result = []
+  (year_start..year_end).each do |year| 
+    result << year if no_repeat?(year) == true
+  end
+  result
 end
 
 describe "#no_repeats" do

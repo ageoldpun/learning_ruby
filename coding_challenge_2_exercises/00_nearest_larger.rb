@@ -14,7 +14,7 @@ require 'rspec/autorun'
 # Difficulty: 2/5
 
 def nearest_larger(arr, i)
-  
+    
 end
 
 describe "#nearest_larger" do
