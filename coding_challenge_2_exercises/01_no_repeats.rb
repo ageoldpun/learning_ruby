@@ -1,6 +1,4 @@
-#require 'rspec/autorun'
-require "test/unit"
-include Test::Unit::Assertions
+require 'rspec/autorun'
 # Write a function, `no_repeats(year_start, year_end)`, which takes a
 # range of years and outputs those years which do not have any
 # repeated digits.
@@ -14,20 +12,18 @@ def no_repeat?(year)
   numbers = year.to_s.split(//)
   if numbers.uniq.length == numbers.length
     numbers = true
-  end  
+  else
+    numbers = false
+  end
+  return numbers
 end
 
-assert_equal false, no_repeat?(1123)
-assert_equal true, no_repeat?(1234)
-
-=begin
 def no_repeats(year_start, year_end)
   array = []
-  years_list = (year_start..year_end).each do |x| 
-  if x.no_repeat? == true; x << array
+  (year_start..year_end).each do |specific_year| 
+    array << specific_year if no_repeat?(specific_year) == true
   end
   return array
-end
 end
 
 describe "#no_repeats" do
@@ -51,4 +47,4 @@ describe "#no_repeats" do
       ]
   end
 end
-=end
+
