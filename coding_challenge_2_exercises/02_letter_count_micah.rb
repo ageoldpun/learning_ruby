@@ -6,11 +6,10 @@ require 'rspec/autorun'
 #
 # Difficulty: 1/5
 
-def letter_count(str)
-  letters = str.split(//)
-  counts = Hash.new(0)
-  letters.each { |x| counts[x] += 1 unless x == " "}
-  counts
+def letter_count(string)
+  string.scan(/\w/).reduce({}) do |counts, letter|
+    counts.merge letter => string.count(letter)
+  end
 end
 
 describe "#letter_count" do
