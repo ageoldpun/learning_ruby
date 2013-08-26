@@ -10,12 +10,7 @@ require 'rspec/autorun'
 
 def no_repeat?(year)
   numbers = year.to_s.split(//)
-  if numbers.uniq.length == numbers.length
-    numbers = true
-  else
-    numbers = false  
-  end
-  numbers
+  numbers.uniq.length == numbers.length
 end
 
 describe "#no_repeat?" do
