@@ -14,7 +14,12 @@ require 'rspec/autorun'
 # Difficulty: 2/5
 
 def nearest_larger(arr, i)
-    
+  j = nil
+  hash = Hash.new
+  arr.each_with_index { |value, index| 
+    hash[value] = index 
+  }
+  hash
 end
 
 describe "#nearest_larger" do
