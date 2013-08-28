@@ -18,14 +18,16 @@ def nearest_larger(arr, i)
   check_minus = i
   check_plus = i
   loop do
-    check_minus = check_minus - 1
-    check_plus = check_plus + 1
+    check_minus = check_minus - 1 unless check_minus == 0
+    check_plus = check_plus + 1 unless check_plus == (arr.count - 1)
     if arr[check_minus] > arr[i] and arr[check_plus] <= arr[i]
       return check_minus
     elsif arr[check_plus] > arr[i] and arr[check_minus] <= arr[i]
       return check_plus
     elsif arr[check_minus] > arr[i] and arr[check_plus] > arr[i]
       return check_minus
+    elsif check_minus == 0 and check_plus == (arr.count - 1)
+      return nil
     elsif arr[check_minus] <= arr[i] and arr[check_plus] <= arr[i]
       benchmark = benchmark + 1
     end
@@ -105,8 +107,7 @@ describe "#nearest_larger" do
   it "should return nil if no larger number is found" do
     nearest_larger([2,6,4,8], 3).should == nil
   end
-end
-=begin
+
   it "blah blah" do
     nearest_larger([6,2], 1).should == 0
   end
@@ -127,4 +128,4 @@ end
     nearest_larger([2,11,3,5,5,5,5,10,5], 7).should == 1
   end
 end
-=end
+
