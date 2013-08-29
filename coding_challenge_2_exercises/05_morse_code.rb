@@ -1,5 +1,4 @@
-require '05_morse_code'
-require 'rspec'
+require 'rspec/autorun'
 
 # Build a function, `morse_encode(str)` that takes in a string (no
 # numbers or punctuation) and outputs the morse code for it. See
@@ -15,8 +14,34 @@ require 'rspec'
 # Difficulty: 2/5
 
 def morse_encode(str)
-
-end
+  str.gsub!("a", ".- ")
+  str.gsub!("b", "-... ")
+  str.gsub!("c", "-.-. ")
+  str.gsub!("d", "-.. ")
+  str.gsub!("e", ". ")
+  str.gsub!("f", "..-. ")
+  str.gsub!("g", "--. ")
+  str.gsub!("h", ".... ")
+  str.gsub!("i", ".. ")
+  str.gsub!("j", ".--- ")
+  str.gsub!("k", "-.- ")
+  str.gsub!("l", ".-.. ")
+  str.gsub!("m", "-- ")
+  str.gsub!("n", "-. ")
+  str.gsub!("o", "--- ")
+  str.gsub!("p", ".--. ")
+  str.gsub!("q", "--.- ")
+  str.gsub!("r", ".-. ")
+  str.gsub!("s", "... ")
+  str.gsub!("t", "- ")
+  str.gsub!("u", "..- ")
+  str.gsub!("v", "...- ")
+  str.gsub!("w", ".-- ")
+  str.gsub!("x", "-..- ")
+  str.gsub!("y", "-.-- ")
+  str.gsub!("z", "--.. ")
+  str = str[0...-1]
+end 
 
 describe "#morse_encode" do
   it "should do a simple letter" do
