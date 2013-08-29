@@ -14,34 +14,37 @@ require 'rspec/autorun'
 # Difficulty: 2/5
 
 def morse_encode(str)
-  str.gsub!("a", ".- ")
-  str.gsub!("b", "-... ")
-  str.gsub!("c", "-.-. ")
-  str.gsub!("d", "-.. ")
-  str.gsub!("e", ". ")
-  str.gsub!("f", "..-. ")
-  str.gsub!("g", "--. ")
-  str.gsub!("h", ".... ")
-  str.gsub!("i", ".. ")
-  str.gsub!("j", ".--- ")
-  str.gsub!("k", "-.- ")
-  str.gsub!("l", ".-.. ")
-  str.gsub!("m", "-- ")
-  str.gsub!("n", "-. ")
-  str.gsub!("o", "--- ")
-  str.gsub!("p", ".--. ")
-  str.gsub!("q", "--.- ")
-  str.gsub!("r", ".-. ")
-  str.gsub!("s", "... ")
-  str.gsub!("t", "- ")
-  str.gsub!("u", "..- ")
-  str.gsub!("v", "...- ")
-  str.gsub!("w", ".-- ")
-  str.gsub!("x", "-..- ")
-  str.gsub!("y", "-.-- ")
-  str.gsub!("z", "--.. ")
-  str = str[0...-1]
-end 
+  alphabet_morse = {
+    "a" => ".- ",
+    "b" => "-... ",
+    "c" => "-.-. ",
+    "d" => "-.. ",
+    "e" => ". ",
+    "f" => "..-. ",
+    "g" => "--. ",
+    "h" => ".... ",
+    "i" => ".. ",
+    "j" => ".--- ",
+    "k" => "-.- ",
+    "l" => ".-.. ",
+    "m" => "-- ",
+    "n" => "-. ",
+    "o" => "--- ",
+    "p" => ".--. ",
+    "q" => "--.- ",
+    "r" => ".-. ",
+    "s" => "... ",
+    "t" => "- ",
+    "u" => "..- ",
+    "v" => "...- ",
+    "w" => ".-- ",
+    "x" => "-..- ",
+    "y" => "-.-- ",
+    "z" => "--.. "
+   }
+  alphabet_morse.each { |key, value| str.gsub!(key, value) }
+  str.chop
+end
 
 describe "#morse_encode" do
   it "should do a simple letter" do
