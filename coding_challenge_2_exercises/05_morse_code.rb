@@ -14,7 +14,7 @@ require 'rspec/autorun'
 # Difficulty: 2/5
 
 def morse_encode(str)
-  alphabet_morse = {
+  letter_to_morse = {
     "a" => ".- ",
     "b" => "-... ",
     "c" => "-.-. ",
@@ -42,7 +42,7 @@ def morse_encode(str)
     "y" => "-.-- ",
     "z" => "--.. "
    }
-  alphabet_morse.each { |key, value| str.gsub!(key, value) }
+  letter_to_morse.each { |letter, morse| str.gsub!(letter, morse) }
   str.chop
 end
 

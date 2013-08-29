@@ -18,14 +18,12 @@ def nearest_larger(arr, i)
   check_plus = i
   loop do
     check_minus = check_minus - 1 unless check_minus == 0
-    check_plus = check_plus + 1 unless check_plus == (arr.count - 1)
-    if arr[check_minus] > arr[i] and arr[check_plus] <= arr[i]
+    check_plus = check_plus + 1 unless check_plus == arr.count - 1
+    if arr[check_minus] > arr[i]
       return check_minus
-    elsif arr[check_plus] > arr[i] and arr[check_minus] <= arr[i]
+    elsif arr[check_plus] > arr[i]
       return check_plus
-    elsif arr[check_minus] > arr[i] and arr[check_plus] > arr[i]
-      return check_minus
-    elsif check_minus == 0 and check_plus == (arr.count - 1)
+    elsif check_minus == 0 and check_plus == arr.count - 1
       return nil 
     end
   end
