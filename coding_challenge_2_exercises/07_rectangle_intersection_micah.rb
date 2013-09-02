@@ -14,6 +14,34 @@ require 'rspec/autorun'
 #
 # Difficulty: 4/5
 
+class Rect < Struct.new(:coords)
+  def | rect
+    return unless intersects?(rect) or rect.intersects?(self)
+    new_x_coords = (x_coords + rect.x_coords).sort[1..2]
+    new_y_coords = (y_coords + rect.y_coords).sort[1..2]
+    new_x_coords.zip(new_y_coords)
+  end
+
+  def intersects? rect
+    rect.x_coords.any? { |coord| Range.new(*x_coords).cover?(coord) } and
+    rect.y_coords.any? { |coord| Range.new(*y_coords).cover?(coord) }
+  end
+
+  def x_coords
+    coords.transpose[0]
+  end
+  
+  def y_coords
+    coords.transpose[1]
+  end
+end
+
+def rec_intersection rect1, rect2
+  rect1 = Rect.new(rect1)
+  rect2 = Rect.new(rect2)
+  rect1 | rect2
+end
+
 describe "#rectangle_intersection" do
   it "handles a simple case" do
     rec_intersection(

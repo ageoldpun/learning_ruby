@@ -1,5 +1,4 @@
-re 'rspec'
-require '06_word_unscrambler'
+require 'rspec/autorun'
 
 # Write a function word_unscrambler that takes two inputs: a scrambled
 # word and a dictionary of real words.  Your program must then output
@@ -10,6 +9,17 @@ require '06_word_unscrambler'
 # equal, then they are anagrams.
 #
 # Difficulty: 3/5
+
+def word_unscrambler(scrambled_word, dictionary)
+  arranged_word = scrambled_word.split(//).sort.join
+  arranged_dictionary = []
+  dictionary.each do |word|
+    if word.split(//).sort.join == arranged_word
+      arranged_dictionary << word
+    end
+  end
+  arranged_dictionary
+end
 
 describe "#word_unscrambler" do
   it "handles a simple word" do

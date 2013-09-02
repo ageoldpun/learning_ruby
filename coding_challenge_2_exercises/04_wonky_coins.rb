@@ -1,5 +1,4 @@
-require '04_wonky_coins'
-require 'rspec'
+require 'rspec/autorun'
 
 # Catsylvanian money is a strange thing: they have a coin for every
 # denomination (including zero!). A wonky change machine in
@@ -11,6 +10,11 @@ require 'rspec'
 # back into the machine until you are left with only zero-value coins.
 #
 # Difficulty: 3/5
+
+def wonky_coins(n)
+  return 1 if n == 0
+  wonky_coins(n/2) + wonky_coins(n/3) + wonky_coins(n/4)
+end
 
 describe "#wonky_coins" do
   it "handles a simple case" do
