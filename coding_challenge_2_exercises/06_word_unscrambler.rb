@@ -12,10 +12,16 @@ require 'rspec/autorun'
 
 def word_unscrambler(scrambled_word, dictionary)
   arranged_word = scrambled_word.split(//).sort.join
-  dictionary.delete_if { |word| word.split(//).sort.join != arranged_word }
+  dictionary.select { |word| word.split(//).sort.join == arranged_word } 
 end
 
 describe "#word_unscrambler" do
+  it "doesn't modify the array passed in" do
+    dictionary = ["tic", "toc", "tac", "toe"]
+    word_unscrambler("cat", dictionary)
+    dictionary.should == ["tic", "toc", "tac", "toe"]
+  end
+
   it "handles a simple word" do
     word_unscrambler("cat", ["tac"]).should == ["tac"]
   end
