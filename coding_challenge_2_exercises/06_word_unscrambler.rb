@@ -12,13 +12,7 @@ require 'rspec/autorun'
 
 def word_unscrambler(scrambled_word, dictionary)
   arranged_word = scrambled_word.split(//).sort.join
-  arranged_dictionary = []
-  dictionary.each do |word|
-    if word.split(//).sort.join == arranged_word
-      arranged_dictionary << word
-    end
-  end
-  arranged_dictionary
+  dictionary.delete_if { |word| word.split(//).sort.join != arranged_word }
 end
 
 describe "#word_unscrambler" do
