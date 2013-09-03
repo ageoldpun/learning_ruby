@@ -11,8 +11,8 @@ require 'rspec/autorun'
 # Difficulty: 3/5
 
 def word_unscrambler(scrambled_word, dictionary)
-  arranged_word = scrambled_word.split(//).sort.join
-  dictionary.select { |word| word.split(//).sort.join == arranged_word } 
+  arranged_word = scrambled_word.split(//).sort
+  dictionary.select { |word| word.split(//).sort == arranged_word } 
 end
 
 describe "#word_unscrambler" do
