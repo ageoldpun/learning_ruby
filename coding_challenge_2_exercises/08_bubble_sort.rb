@@ -6,11 +6,27 @@ require 'rspec/autorun'
 #
 # Difficulty: 3/5
 
-def bubble_sort(arr)
-  arr.sort
+def bubble_sort(arr, steps = nil)
+  if steps == nil
+    steps = arr.count - 1
+  end
+  count = 0
+  until count == arr.count
+    steps.times do |index|
+      if arr[index] > arr[index+1]
+        arr[index], arr[index+1] = arr[index+1], arr[index]
+      end
+    end
+    count = count + 1
+  end
+  return arr
 end
 
 describe "#bubble_sort" do
+  it "sorts using the bubble method" do
+    bubble_sort([5, 4, 3, 2, 1], 2).should == [3, 4, 5, 2, 1]
+  end
+
   it "works with an empty array" do
     bubble_sort([]).should == []
   end
