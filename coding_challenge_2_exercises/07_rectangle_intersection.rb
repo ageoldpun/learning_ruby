@@ -14,42 +14,17 @@ require 'rspec/autorun'
 #
 # Difficulty: 4/5
 
+def rec_intersect?(rect1, rect2)
+  rect1[1][1] > rect2[0][1] and rect1[1][0] > rect2[0][0]
+end
+
 def rec_intersection(rect1, rect2)
-  x_minimum = 0
-  if rect1[0][0] >= rect2[0][0]
-    x_minimum = rect1[0][0]
-  else
-    x_minimum = rect2[0][0]
-  end
-
-  x_maximum = 0
-  if rect1[1][0] < rect2[1][0]
-    x_maximum = rect1[1][0]
-  else
-    x_maximum = rect2[1][0]
-  end
-
-  y_minimum = 0
-  if rect1[0][1] >= rect2[0][1]
-    y_minimum = rect1[0][1]
-  else
-    y_minimum = rect2[0][1]
-  end
-
-  y_maximum = 0
-  if rect1[1][1] < rect2[1][1]
-    y_maximum = rect1[1][1]
-  else
-    y_maximum = rect2[1][1]
-  end
-
-  result = [[x_minimum, y_minimum], [x_maximum, y_maximum]]
-
-  if rect1[1][1] < rect2[0][1] and rect1[1][0] < rect2[0][0]
-    return nil
-  else
-    return result
-  end
+  return unless rec_intersect?(rect1, rect2)
+  left = [rect1[0][0], rect2[0][0]].max
+  right = [rect1[1][0], rect2[1][0]].min
+  bottom = [rect1[0][1], rect2[0][1]].max
+  top = [rect1[1][1], rect2[1][1]].min
+  [[left, bottom], [right, top]]
 end
 
 describe "#rectangle_intersection" do
