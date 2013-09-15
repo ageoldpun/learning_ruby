@@ -2,18 +2,14 @@ require "test/unit"
 include Test::Unit::Assertions
 
 def encrypt(str)
-  split = str.split(//)
-  solution = []
-  split.each do |letter|
-    if solution == []
+  str.split("").reduce([]) do |solution, letter|
+    if solution.empty? || letter != solution[-1][0]
       solution.push [letter, 1]
-    elsif letter == solution[-1][0]
-      solution[-1][1] = solution[-1][1] + 1
-    elsif
-      solution.push [letter, 1] 
+    else
+      solution[-1][1] += 1
     end
+    solution
   end
-  return solution
 end
 
 assert_equal [["a", 3], ["b", 2], ["c", 1], ["b", 2], ["a", 3]], encrypt("aaabbcbbaaa")

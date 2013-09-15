@@ -2,16 +2,8 @@ require "test/unit"
 include Test::Unit::Assertions
 
 def one_off_words(str, word_list)
-  str = str.split(//)
-  
   word_list.select do |word|
-    counter = 0
-    word.split(//).each_with_index do |letter, index|
-      if word[index] == str[index]
-        counter = counter + 1
-      end
-    end
-    counter == str.count - 1
+    (word.chars - str.chars).length == 1
   end
 end
 

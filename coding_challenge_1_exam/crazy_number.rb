@@ -2,23 +2,9 @@ require "test/unit/assertions"
 include Test::Unit::Assertions
 
 def crazy_nums(max)
-  array = []
-  (1...max).each do |x|
-    if x % 3 == 0
-      array << x
-    end
-    if x % 5 == 0
-      array << x
-    end
+  (1...max).select do |x|
+    [x % 3, x % 5].select(&:zero?).count == 1
   end
-  results = []
-  array.each do |x|
-    if x % 3 == 0 && x % 5 == 0
-    else
-      results << x
-    end
-  end
-  return results
 end
 
 assert_equal [], crazy_nums(3)

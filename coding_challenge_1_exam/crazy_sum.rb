@@ -3,8 +3,8 @@ include Test::Unit::Assertions
 
 def crazy_sum(numbers)
   sum = 0
-  numbers.count.times {|i| sum = sum + numbers[i] * i }
-  return sum
+  numbers.each_with_index { |number, index| sum += number * index }
+  sum
 end
 
 assert_equal 0, crazy_sum([2]) # (2*0)
